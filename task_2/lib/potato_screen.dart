@@ -91,6 +91,7 @@ class _PotatoScreenState extends State<PotatoScreen> {
                     setState(() {});
                   },
                 ),
+
                 CheckboxListTile(
                   title: Text("Shoes"),
                   value: showShoes,
@@ -99,6 +100,7 @@ class _PotatoScreenState extends State<PotatoScreen> {
                     setState(() {});
                   },
                 ),
+
                 CheckboxListTile(
                   title: Text("Nose"),
                   value: showNose,
@@ -107,7 +109,7 @@ class _PotatoScreenState extends State<PotatoScreen> {
                     setState(() {});
                   },
                 ),
-                ///////////////////////////////////////////////////
+
                 CheckboxListTile(
                   title: Text("Ears"),
                   value: showEars,
