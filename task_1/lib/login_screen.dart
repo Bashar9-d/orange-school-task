@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:text_input/sign_up.dart';
+import 'package:text_input/signup_screen.dart';
 
 import 'home_screen.dart';
 
@@ -101,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SignUp(),
+                    builder: (context) => SignUpScreen(),
                   ),
                 );
               },
