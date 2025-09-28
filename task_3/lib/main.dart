@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'WhatsAppUI.dart';
+import 'whats_app_ui.dart';
 import 'login_screen.dart';
 
 void main() {
