@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:text_input/status_screen.dart';
 
+import 'calls_screen.dart';
+import 'chats_screen.dart';
 import 'login_screen.dart';
 
 class WhatsAppUI extends StatefulWidget {
@@ -16,8 +19,8 @@ class _WhatsAppUIState extends State<WhatsAppUI> {
 
   getData() async {
     final prefs = await SharedPreferences.getInstance();
-    name = prefs.getString('name')??"";
-    email = prefs.getString('email')??"";
+    name = prefs.getString('name') ?? "";
+    email = prefs.getString('email') ?? "";
     setState(() {});
   }
 
@@ -92,17 +95,14 @@ class _WhatsAppUIState extends State<WhatsAppUI> {
               leading: Icon(Icons.logout, color: Colors.red),
               title: Text("تسجيل خروج", style: TextStyle(color: Colors.red)),
               onTap: () async {
-                  final prefs = await SharedPreferences.getInstance();
-                  prefs.remove('email');
-                  prefs.remove('password');
-                  prefs.remove('name');
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LoginScreen(),
-                    ),
-                  );
-
+                final prefs = await SharedPreferences.getInstance();
+                prefs.remove('email');
+                prefs.remove('password');
+                prefs.remove('name');
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                );
               },
             ),
           ],
@@ -124,48 +124,5 @@ class _WhatsAppUIState extends State<WhatsAppUI> {
         ],
       ),
     );
-  }
-}
-
-class ChatsScreen extends StatelessWidget {
-  final List<Map<String, String>> chats = List.generate(
-    20,
-        (index) => {
-      "name": "Contact $index",
-      "message": "رسالة تجريبية رقم $index",
-      "time": "${index + 1}:00 PM",
-    },
-  );
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: chats.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          leading: CircleAvatar(
-            backgroundColor: Colors.teal[300],
-            child: Text(chats[index]["name"]![0]),
-          ),
-          title: Text(chats[index]["name"]!),
-          subtitle: Text(chats[index]["message"]!),
-          trailing: Text(chats[index]["time"]!),
-        );
-      },
-    );
-  }
-}
-
-class StatusScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text("Status Screen"));
-  }
-}
-
-class CallsScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text("Calls Screen"));
   }
 }
